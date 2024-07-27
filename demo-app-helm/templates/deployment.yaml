@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  selector:
+    matchLabels:
+      app: node-app
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-app
+          image: karanbalkar90/examplenodejsapp-dev:9
+          ports:
+            - containerPort: 3000
